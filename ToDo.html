@@ -1,18 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <body>
-        <input type = "text"></input>
-        <button onclick="addtodo()">add todo!</button>
+        <input type="text" placeholder="Enter a todo">
+        <button onclick="addtodo()">Add Todo</button>
+        <div id="todo-list"></div> <!-- Container for todos -->
     </body>
     <script>
-         function addtodo(){
-            const inputelement=document.querySelector("input");
-        const inputvalue=inputelement.value;
+        function addtodo() {
+            const inputElement = document.querySelector("input");
+            const inputValue = inputElement.value.trim();
 
-        const newtodo= document.createElement("div");
-        newtodo.innerText=inputvalue;
-        document.querySelector("body").appendChild(newtodo);
+            if (inputValue === "") return; // Ignore empty todos
+
+            // Create a todo container (div)
+            const newTodo = document.createElement("div");
+
+            // Create a span to hold text
+            const todoText = document.createElement("span");
+            todoText.innerText = inputValue;
+
+            // Create a delete button
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "Delete";
+            deleteBtn.onclick = function () {
+                newTodo.remove();
+            };
+
+            // Append text and button to todo div
+            newTodo.appendChild(todoText);
+            newTodo.appendChild(deleteBtn);
+
+            // Append todo div to the main list
+            document.getElementById("todo-list").appendChild(newTodo);
+
+            // Clear input field
+            inputElement.value = "";
         }
-        
     </script>
 </html>
