@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <body>
+        <input type = "text"></input>
+        <button onclick="addtodo()">add todo!</button>
+    </body>
+    <script>
+         function addtodo(){
+            const inputelement=document.querySelector("input");
+        const inputvalue=inputelement.value;
+
+        const newtodo= document.createElement("div");
+        newtodo.innerText=inputvalue;
+        document.querySelector("body").appendChild(newtodo);
+        }
+        
+    </script>
+</html>
